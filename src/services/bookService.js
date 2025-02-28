@@ -13,9 +13,9 @@ const categories = [
 ];
 
 // Fetch all books based on a query (default query is 'history')
-const fetchAllBooks = async (query = "history") => {
+const fetchAllBooks = async (query = "history", max) => {
   try {
-    const response = await fetch(`${BASE_URL}?q=${query}`);
+    const response = await fetch(`${BASE_URL}?q=${query}&maxResults=${max}`);
     const data = await response.json();
     return data.items || [];
   } catch (error) {
@@ -36,9 +36,11 @@ const fetchBookById = async (id) => {
   }
 };
 const fetchBooksByCategory = async (category) => {
+  console.log(category, "Fetching books for category");
   try {
     const response = await fetch(`${BASE_URL}?q=${category}&maxResults=10`);
     const data = await response.json();
+    console.log(data, "Fetched data");
     return { category, books: data.items || [] };
   } catch (error) {
     console.error(`Error fetching books for category: ${category}`, error);
