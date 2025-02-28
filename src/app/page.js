@@ -1,5 +1,6 @@
 "use client";
-import BookSection from "@/componenets/landingPage/booksection";
+
+import BookSection from "@/componenets/landingPage/Booksection";
 import HeroSection from "@/componenets/landingPage/HomeSection";
 
 export default function Home() {
